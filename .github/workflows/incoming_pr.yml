@@ -43,7 +43,7 @@ jobs:
       - name: Check Snowflake CLI Version
         run: snow --version
       - name: Deploy Snowflake project
-        working-directory: /home/runner/work/dbt_practice/dbt_practice/dbt_data
+        working-directory: dbt_practice/dbt_practice/dbt_data
         run: |
             snow streamlit deploy --connection ci_oidc
             
