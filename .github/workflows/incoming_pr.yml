@@ -32,6 +32,14 @@ jobs:
 
       - name: Install dbt-snowflake
         run: pip install dbt-snowflake
+      - name: Write Snowflake private key file
+        env:
+          SNOWFLAKE_PRIVATE_KEY: ${{ secrets.SNOWFLAKE_PRIVATE_KEY }}
+        run: |
+          mkdir -p ~/.ssh
+          printf "%s\n" "$SNOWFLAKE_PRIVATE_KEY" > ~/.ssh/dbt_rsa_key.p8
+          chmod 600 ~/.ssh/dbt_rsa_key.p8
+          echo "DBT_ENV_SECRET_PRIVATE_KEY_PATH=$HOME/.ssh/dbt_rsa_key.p8" >> "$GITHUB_ENV"
 
       - name: Run dbt deps and build
         run: |
