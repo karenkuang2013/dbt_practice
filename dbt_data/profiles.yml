@@ -27,5 +27,4 @@ dbt_data:
       schema: PROD
       threads: 4
       warehouse: COMPUTE_WH
-
   target: dev
