@@ -48,8 +48,8 @@ jobs:
         
       - name: Deploy Snowflake project
         run: |
-          dbt deps --project-dir dbt_data --profiles-dir dbt_data
-          dbt build --project-dir dbt_data --profiles-dir dbt_data --target prod
+          dbt deps --project-dir . --profiles-dir .
+          dbt build --project-dir . --profiles-dir . --target prod
             
       # The -x is shorthand for --temporary-connection
       - run: snow connection test -x
