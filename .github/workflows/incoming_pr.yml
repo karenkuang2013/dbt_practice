@@ -22,11 +22,7 @@ jobs:
       # SNOWFLAKE_PASSWORD: ${{ secrets.SNOWFLAKE_PAT }} # Snowflake password is required if you aren't using OIDC
       SNOWFLAKE_DATABASE: ${{ vars.SNOWFLAKE_DATABASE }}
       SNOWFLAKE_SCHEMA: ${{ vars.SNOWFLAKE_PROD_SCHEMA }}
-     run: |
-        dbt deps --project-dir dbt_data --profiles-dir dbt_data
-        dbt seed --project-dir dbt_data --profiles-dir dbt_data --target prod
-        dbt build --project-dir dbt_data --profiles-dir dbt_ata --target prod
-      
+     
     
 
     steps:
@@ -43,7 +39,7 @@ jobs:
       - name: Check Snowflake CLI Version
         run: snow --version
       - name: Deploy Snowflake project
-        working-directory: dbt_practice/dbt_practice/dbt_data
+        working-directory: /dbt_practice/dbt_practice/dbt_data
         run: |
             snow streamlit deploy --connection ci_oidc
             
