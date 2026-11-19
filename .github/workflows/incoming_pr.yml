@@ -35,7 +35,14 @@ jobs:
         uses: snowflakedb/snowflake-actions@v3
         with: # Ensures Snowflake CLI will search for OIDC users matching this subject
           use-oidc: true
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+            python-version: "3.12"
 
+      - name: Install dbt-snowflake
+        run: pip install dbt-snowflake
+          
       - name: Check Snowflake CLI Version
         run: snow --version
         
