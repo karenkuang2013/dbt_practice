@@ -42,8 +42,8 @@ jobs:
       - name: Deploy Snowflake project
         working-directory: dbt_data
         run: |
-          dbt deps --profiles-dir .
-          dbt build --profiles-dir . --target prod
+          dbt deps --project-dir dbt_data --profiles-dir dbt_data
+          dbt build --project-dir dbt_data --profiles-dir dbt_data --target prod
             
       # The -x is shorthand for --temporary-connection
       - run: snow connection test -x
