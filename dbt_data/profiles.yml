@@ -1,0 +1,31 @@
+dbt_data:
+  outputs:
+    dev:
+      type: snowflake
+      account: FEDKJBS-IY17638
+      user: dbt
+
+      role: TRANSFORM
+      private_key_path: "{{ env_var('DBT_ENV_SECRET_PRIVATE_KEY_PATH') }}"
+      private_key_passphrase: "{{ env_var('DBT_ENV_SECRET_PRIVATE_KEY_PASSPHRASE') }}"
+
+      database: AIRSTATS
+      schema: DEV
+      threads: 4
+      warehouse: COMPUTE_WH
+
+    prod:
+      type: snowflake
+      account: FEDKJBS-IY17638
+      user: dbt
+
+      role: TRANSFORM
+      private_key_path: "{{ env_var('DBT_ENV_SECRET_PRIVATE_KEY_PATH') }}"
+      private_key_passphrase: "{{ env_var('DBT_ENV_SECRET_PRIVATE_KEY_PASSPHRASE') }}"
+
+      database: AIRSTATS
+      schema: PROD
+      threads: 4
+      warehouse: COMPUTE_WH
+
+  target: dev
