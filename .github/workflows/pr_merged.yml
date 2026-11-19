@@ -10,8 +10,8 @@ permissions:
 
 jobs:
   run-snowflake-dbt-job:
-    if: github.event.pull_request.merged == true
-    name: "Run on Accepted PR"
+    if: github.event_name == 'push' || github.event.pull_request.merged == true
+    name: "Run on Accepted PR or Push to main"
     runs-on: ubuntu-latest
     environment: prod
     env:
