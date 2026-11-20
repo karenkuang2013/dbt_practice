@@ -4,3 +4,4 @@ dbt_packages/
 logs/
 .env
 rsa_key.p8
+dbt_data/dbt_rsa_key.p8
